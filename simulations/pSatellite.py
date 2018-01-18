@@ -13,7 +13,7 @@
 # of the antibiotic resistance gene onto the chromosome.
 import random
 import time
-
+x = 7
 
 # Cell population stored as dictionary of lists:
 #   Keys are tuples as number of (FP, MP, DP) in that category of cell
