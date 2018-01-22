@@ -13,54 +13,71 @@
 # of the antibiotic resistance gene onto the chromosome.
 import random
 import time
-x = 7
 
 # Cell population stored as dictionary of lists:
 #   Keys are tuples as number of (FP, MP, DP) in that category of cell
 #   Values are lists with (Fitness, Selection Probability, Cell Number)
+print("Would you like to use default values for mutation rates, fitnesses, etc.?")
+useDefaults = input("y/n: ")
+while useDefaults != "y" and useDefaults != "n":
+	useDefaults = input("Please type a single character, y/n: ")
 
-#Global settings
-plasmidsPerCell = 20
+if useDefaults == "y":
+	useDefaults = True
+else:
+	useDefaults = False
 
-# Relativ fitnesses of plasmids for intra-cell replication
-fullPlasmidFitness = 1   # Fitness for FP, MP, and DP. FP and DP arbitrarily set to 0.4
-miniPlasmidFitness = 1.2 # 1.2 to 1.5 gives correct ratio
-deletionPlasmidFitness = 1.05
+if useDefaults:
+	plasmidsPerCell = 20
+	# Relative fitnesses of plasmids for intra-cell replication
+	fullPlasmidFitness = 1
+	miniPlasmidFitness = 1.2
+	deletionPlasmidFitness = 1.05
+	# Mutation rates for full plasmid to convert to miniplasmid or deletion plasmid
+	FPtoMPrate = 10 ** -5
+	FPtoDPrate = 10 ** -5
+	# Relative fitness
+	# all full plasmids     = 0.45
+	# contains mini plasmid = 0.81
+	# fraction mini plasmid = 0.8
+	# all deletion plasmid  = 0.90
+	fitnessAllFP = 0.45
+	fitnessContainsMP = 0.81
+	averageFractionMP = 0.8
+	fitnessAllDP = 0.90
+else:
+	plasmidsPerCell = int(input("Enter number of plasmids per cell: "))
+	# Relative fitnesses of plasmids for intra-cell replication
+	fullPlasmidFitness = float(input("Enter full plasmid fitness: "))
+	miniPlasmidFitness = float(input("Enter miniplasmid fitness: "))
+	deletionPlasmidFitness = float(input("Enter deletion plasmid fitness: "))
+	# Mutation rates for full plasmid to convert to miniplasmid or deletion plasmid
+	FPtoMPrate = float(eval(input("Enter mutation rate for full plasmid to miniplasmid: ")))
+	FPtoDPrate = float(eval(input("Enter mutation rate for full plasmid to deletion plasmid: ")))
 
-FPtoMPrate = (1 * 10 ** -5) # Mutation rates for full plasmid to mini plasmid
-FPtoDPrate = (1 * 10 ** -5) # Mutation rates for full plasmid to deletion plasmid
-
-#Set to empty string to not create file
-populationFileName = "population.csv"
-summaryFileName = "summary.csv"
-
-# Models for plasmid replication and segregation
-# 1 = First, replicate plasmidsPerCell split new plasmids. Then split exactly 50/50 into daughter cells.
-# 2 = First replicate plasmidsPerCell split new plasmids. Then, coin flip for which plasmids end up in each daughter cell.
-# 4 = First, segregate plasmid via coin flip to new cells. Then, replicate each cell up to plasmidsPerCell split.
-plasmidReplicationSegregationModel = 4
-
-
-#Relative fitness
-# all full plasmids     = 0.45
-# contains mini plasmid = 0.81
-# fraction mini plasmid = 0.8
-# all deletion plasmid  = 0.90
-
-fitnessAllFP = 0.45
-fitnessContainsMP = 0.81
-averageFractionMP = 0.8
-fitnessAllDP = 0.9
+	fitnessAllFP = float(input("Enter relative fitness for all full plasmids: "))
+	fitnessContainsMP =  float(input("Enter relative fitness for cells with miniplasmid: "))
+	averageFractionMP = float(input("Enter average fraction on miniplasmid: "))
+	fitnessAllDP =  float(input("Enter relative fitness for all deletion plasmids: "))
 
 fitnessCostFP = (1 - fitnessAllFP)/plasmidsPerCell
 fitnessCostMP = ((1 - fitnessCostFP * (plasmidsPerCell * (1-averageFractionMP))) - fitnessContainsMP) / (plasmidsPerCell * averageFractionMP)
 fitnessCostDP = (1 - fitnessAllDP)/plasmidsPerCell
 
-print "\nFitness Model"
-print "  Full Plasmid Cost = " + str(fitnessCostFP)
-print "  Mini Plasmid Cost = " + str(fitnessCostMP)
-print "  Del  Plasmid Cost = " + str(fitnessCostDP)
-print ""
+print ("\nFitness Model")
+print ("  Full Plasmid Cost = " + str(fitnessCostFP))
+print ("  Mini Plasmid Cost = " + str(fitnessCostMP))
+print ("  Del  Plasmid Cost = " + str(fitnessCostDP))
+
+#Set to empty string to not create file
+populationFileName = "population.csv"
+summaryFileName = "summary.csv"
+
+print("\nModels for plasmid replication and segregation")
+print("1 = First, replicate plasmidsPerCell split new plasmids. Then split exactly 50/50 into daughter cells.")
+print("2 = First replicate plasmidsPerCell split new plasmids. Then, coin flip for which plasmids end up in each daughter cell.")
+print("4 = First, segregate plasmid via coin flip to new cells. Then, replicate each cell up to plasmidsPerCell split.\n")
+plasmidReplicationSegregationModel = int(input("Enter desired plasmid segregation model: "))
 
 
 def computeFitness(cellType):
@@ -230,7 +247,8 @@ def divide(cell, states, pop):
 	#print " Total cells after : " + str(total) + "\n"
 
 def main():
-	random.seed(7)
+	seednum = int(input("Enter an integer value for seed: "))
+	random.seed(seednum)
 	
 	t = int( time.time() * 1000.0 )
 	random.seed( ((t & 0xff000000) >> 24) +
