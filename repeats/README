@@ -1,0 +1,22 @@
+# Inputs
+# *.fa sequence files
+# deletion_description.csv
+#   gives the segments that were used for determining possible 'deletion' 
+#   and 'satellite' plasmid coordinates for recombination
+
+
+# Step 1
+# Generate lists of matches (must have MUMmer installed and in $PATH)
+
+bash repeats
+
+# Step 2 
+
+R --vanilla < repeats.R
+
+# Output files
+#
+# repeats.counts.csv
+#   counts of repeats of different lengths for deletion/
+# repeats.plot.pdf
+#   density plot
