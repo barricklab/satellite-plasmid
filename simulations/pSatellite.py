@@ -13,54 +13,76 @@
 # of the antibiotic resistance gene onto the chromosome.
 import random
 import time
-x = 7
 
 # Cell population stored as dictionary of lists:
 #   Keys are tuples as number of (FP, MP, DP) in that category of cell
 #   Values are lists with (Fitness, Selection Probability, Cell Number)
+print("Would you like to use default values for mutation rates, fitnesses, etc.?")
+useDefaults = input("y/n: ")
+while useDefaults != "y" and useDefaults != "n":
+	useDefaults = input("Please type a single character, y/n: ")
 
-#Global settings
-plasmidsPerCell = 20
+if useDefaults == "y":
+	useDefaults = True
+else:
+	useDefaults = False
 
-# Relativ fitnesses of plasmids for intra-cell replication
-fullPlasmidFitness = 1   # Fitness for FP, MP, and DP. FP and DP arbitrarily set to 0.4
-miniPlasmidFitness = 1.2 # 1.2 to 1.5 gives correct ratio
-deletionPlasmidFitness = 1.05
+if useDefaults:
+	plasmidsPerCell = 20
+	# Relative fitnesses of plasmids for intra-cell replication
+	fullPlasmidFitness = 1
+	miniPlasmidFitness = 1.2
+	deletionPlasmidFitness = 1.05
+	# Mutation rates for full plasmid to convert to miniplasmid or deletion plasmid
+	FPtoMPrate = 10 ** -5
+	FPtoDPrate = 10 ** -5
+	# Relative fitness
+	# all full plasmids     = 0.45
+	# contains mini plasmid = 0.81
+	# fraction mini plasmid = 0.8
+	# all deletion plasmid  = 0.90
+	fitnessAllFP = 0.45
+	fitnessContainsMP = 0.81
+	averageFractionMP = 0.8
+	fitnessAllDP = 0.90
+else:
+	plasmidsPerCell = int(input("Enter number of plasmids per cell: "))
+	# Relative fitnesses of plasmids for intra-cell replication
+	fullPlasmidFitness = float(input("Enter full plasmid fitness: "))
+	miniPlasmidFitness = float(input("Enter miniplasmid fitness: "))
+	deletionPlasmidFitness = float(input("Enter deletion plasmid fitness: "))
+	# Mutation rates for full plasmid to convert to miniplasmid or deletion plasmid
+	FPtoMPrate = float(eval(input("Enter mutation rate for full plasmid to miniplasmid: ")))
+	FPtoDPrate = float(eval(input("Enter mutation rate for full plasmid to deletion plasmid: ")))
 
-FPtoMPrate = (1 * 10 ** -5) # Mutation rates for full plasmid to mini plasmid
-FPtoDPrate = (1 * 10 ** -5) # Mutation rates for full plasmid to deletion plasmid
-
-#Set to empty string to not create file
-populationFileName = "population.csv"
-summaryFileName = "summary.csv"
-
-# Models for plasmid replication and segregation
-# 1 = First, replicate plasmidsPerCell split new plasmids. Then split exactly 50/50 into daughter cells.
-# 2 = First replicate plasmidsPerCell split new plasmids. Then, coin flip for which plasmids end up in each daughter cell.
-# 4 = First, segregate plasmid via coin flip to new cells. Then, replicate each cell up to plasmidsPerCell split.
-plasmidReplicationSegregationModel = 4
-
-
-#Relative fitness
-# all full plasmids     = 0.45
-# contains mini plasmid = 0.81
-# fraction mini plasmid = 0.8
-# all deletion plasmid  = 0.90
-
-fitnessAllFP = 0.45
-fitnessContainsMP = 0.81
-averageFractionMP = 0.8
-fitnessAllDP = 0.9
+	fitnessAllFP = float(input("Enter relative fitness for all full plasmids: "))
+	fitnessContainsMP =  float(input("Enter relative fitness for cells with miniplasmid: "))
+	averageFractionMP = float(input("Enter average fraction on miniplasmid: "))
+	fitnessAllDP =  float(input("Enter relative fitness for all deletion plasmids: "))
 
 fitnessCostFP = (1 - fitnessAllFP)/plasmidsPerCell
 fitnessCostMP = ((1 - fitnessCostFP * (plasmidsPerCell * (1-averageFractionMP))) - fitnessContainsMP) / (plasmidsPerCell * averageFractionMP)
 fitnessCostDP = (1 - fitnessAllDP)/plasmidsPerCell
 
-print "\nFitness Model"
-print "  Full Plasmid Cost = " + str(fitnessCostFP)
-print "  Mini Plasmid Cost = " + str(fitnessCostMP)
-print "  Del  Plasmid Cost = " + str(fitnessCostDP)
-print ""
+print ("\nFitness Model")
+print ("  Full Plasmid Cost = " + str(fitnessCostFP))
+print ("  Mini Plasmid Cost = " + str(fitnessCostMP))
+print ("  Del  Plasmid Cost = " + str(fitnessCostDP))
+
+#Set to empty string to not create file
+populationFileName = "population.csv"
+summaryFileName = "summary.csv"
+
+print("\nModels for plasmid replication and segregation")
+print("1 = First, replicate plasmidsPerCell split new plasmids. Then split exactly 50/50 into daughter cells.")
+print("2 = First replicate plasmidsPerCell split new plasmids. Then, coin flip for which plasmids end up in each daughter cell.")
+print("4 = First, segregate plasmid via coin flip to new cells. Then, replicate each cell up to plasmidsPerCell split.\n")
+plasmidReplicationSegregationModel = int(input("Enter desired plasmid segregation model: "))
+
+print("Daughter cells can either be replaced in initial population, or can be put in new population each generation.")
+print("1 = Daughter cells are replaced in initial population. Number of divisions in a generation equals the size of the population.")
+print("2 = Daughter cells placed in offspring population, which becomes next generation after reaching number of cells in ancestral population.")
+daughterPlacement = int(input("Enter number for desired model: "))
 
 
 def computeFitness(cellType):
@@ -73,7 +95,7 @@ def computeFitness(cellType):
 		fitness -= fitnessCostDP # Fitness cost for deletion plasmid
 	return fitness # Return fitness of a cell containing those plasmids
 
-def computeSelectionProb(states, pop):
+def computeSelectionProb(states):
 	popFit = 0
 	for key in states:
 		states[key][1] = states[key][0] * states[key][2]
@@ -229,16 +251,89 @@ def divide(cell, states, pop):
 		total += states[key][2]
 	#print " Total cells after : " + str(total) + "\n"
 
+def divideIntoNextGeneration(cell, states, nextGeneration):
+	#print "Dividing cell  : " + str(cell) + "\n"
+	#print "         state : " + str(states[cell]) + "\n"
+	#total = 0
+	#for key in states:
+	#	total += states[key][2]
+	#print " Total cells before : " + str(total) + "\n"
+
+	states[cell][2] -= 1 # Subtract the cell about to reproduce from the population
+	if (states[cell][2] == 0):
+		del states[cell]
+
+	cell = list(cell) # Convert the tuple to a list
+
+	#For methods that replicate BEFORE segregate
+	if (plasmidReplicationSegregationModel == 1) or (plasmidReplicationSegregationModel == 2):
+		replicatePlasmidsInCell(cell,plasmidsPerCell)
+
+	daughter1 = [0, 0, 0] # Make two empty daughter cells
+	daughter2 = [0, 0, 0]
+
+
+### Divide plasmids
+	plasmidList = []
+	plasmidList += cell[0] * [0]
+	plasmidList += cell[1] * [1]
+	plasmidList += cell[2] * [2]
+		
+	# Equal
+	if (plasmidReplicationSegregationModel == 1):
+		random.shuffle(plasmidList)
+		for p in range(0,plasmidsPerCell):
+			daughter1[plasmidList[p]] += 1
+		for p in range(plasmidsPerCell,2*plasmidsPerCell):
+			daughter2[plasmidList[p]] += 1	
+	# Coin flip
+	elif (plasmidReplicationSegregationModel == 2) or (plasmidReplicationSegregationModel == 4):
+		for p in plasmidList:
+			randNum = random.uniform(0, 1)
+			if randNum < 0.5:
+				daughter1[p] += 1
+			else:
+				daughter2[p] += 1
+	else:
+		exit()
+	
+		#For methods that replicate AFTER segregate
+	if (plasmidReplicationSegregationModel == 4):
+		replicatePlasmidsInCell(daughter1,plasmidsPerCell-daughter1[0]-daughter1[1]-daughter1[2])
+		replicatePlasmidsInCell(daughter2,plasmidsPerCell-daughter2[0]-daughter2[1]-daughter2[2])
+	
+	daughter1 = tuple(daughter1)
+	daughter2 = tuple(daughter2)
+	daughters = [daughter1, daughter2]
+
+	for daughter in daughters:
+		if daughter in nextGeneration:
+			nextGeneration[daughter][2] += 1
+		else:
+			nextGeneration[daughter] = [computeFitness(daughter), None, 1]
+
+	# total = 0
+	# for key in states:
+	# 	total += states[key][2]
+	#print " Total cells after : " + str(total) + "\n"
+
+
+
 def main():
-	random.seed(7)
+	seednum = int(input("Enter an integer value for seed: "))
+	random.seed(seednum)
 	
-	t = int( time.time() * 1000.0 )
-	random.seed( ((t & 0xff000000) >> 24) +
-		((t & 0x00ff0000) >>  8) +
-		((t & 0x0000ff00) <<  8) +
-		((t & 0x000000ff) << 24)   )
+	# t = int( time.time() * 1000.0 )
+	# random.seed( ((t & 0xff000000) >> 24) +
+	# 	((t & 0x00ff0000) >>  8) +
+	# 	((t & 0x0000ff00) <<  8) +
+	# 	((t & 0x000000ff) << 24)   )
 	
-	pop = int(input("Enter population size: ")) # The user enters the number of cells to be simulated.
+	pop = int(input("Enter population size: ")) # The user enters the number of cells per generation to be simulated.
+	divisionsPerGeneration = pop
+	if daughterPlacement == 2:
+		divisionsPerGeneration /= 2
+		divisionsPerGeneration = int(divisionsPerGeneration)
 	states = {} # Create a dictionary of "cell states" that keeps track of cells in population
 	summaryfile = open ("summary.txt", "w") # Open file to record results
 
@@ -259,11 +354,17 @@ def main():
 		generations = int(input("Enter the number of generations to be simulated: ")) # User inputs number of generations to be simulated
 		for gen in range(generations):
 			generation += 1 # Add one to counter of number of generations simulated
-			for eachCell in range(pop): # A number of cells equal to the size of the population will be chosen to divide each generation
-				states = computeSelectionProb(states, pop)
+			if daughterPlacement == 2:
+				nextGeneration = {}
+			for eachCell in range(divisionsPerGeneration): # A number of cells equal to the size of the population will be chosen to divide each generation
+				states = computeSelectionProb(states)
 				cellToDiv = pickCellToDivide(states)
-				divide(cellToDiv, states, pop)
-
+				if daughterPlacement == 1:
+					divide(cellToDiv, states, pop)
+				elif daughterPlacement == 2:
+					divideIntoNextGeneration(cellToDiv, states, nextGeneration)
+			if daughterPlacement == 2:
+				states = nextGeneration
 			FPonlyCount = 0 # Reset cell counters
 			FPcount = 0
 			MPcount = 0
@@ -339,6 +440,6 @@ def main():
 			keepGoing = True 
 		else:
 			keepGoing = False # Breaks loop to exit simulation
-	outfile.close()
+	summaryfile.close()
 	print("Exiting...")
 main()
