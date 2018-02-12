@@ -13,11 +13,15 @@ gfp_del_2 = read.table("gfp-del-2.coords.tab", skip=3, sep="\t", row.names=NULL)
 colnames(gfp_del_2) = c("S1", "E2", "S2", "S3", "LEN1", "LEN2", "IDY", "SEQ1", "SEQ2")
 gfp_del_2$type="deletion"
 
+gfp_del_3 = read.table("gfp-del-3.coords.tab", skip=3, sep="\t", row.names=NULL)
+colnames(gfp_del_3) = c("S1", "E2", "S2", "S3", "LEN1", "LEN2", "IDY", "SEQ1", "SEQ2")
+gfp_del_3$type="deletion"
+
 satellite = read.table("satellite.coords.tab", skip=3, sep="\t", row.names=NULL)
 colnames(satellite) = c("S1", "E2", "S2", "S3", "LEN1", "LEN2", "IDY", "SEQ1", "SEQ2")
 satellite$type="satellite"
 
-full_data = gfp_del_1 %>% rbind(gfp_del_2) %>% rbind(satellite)
+full_data = gfp_del_1 %>% rbind(gfp_del_2) %>% rbind(gfp_del_3) %>% rbind(satellite)
 
 ggplot(full_data, aes(LEN1,..density.., color=type)) + geom_freqpoly(binwidth=1)
 ggsave("repeats.plot.pdf")

@@ -17,3 +17,10 @@ show-coords -T -r gfp-del-1.fdelta > gfp-del-1.coords.tab
 nucmer $NUCMER_OPTIONS --prefix=gfp-del-2 gfp-del-2-left.fa gfp-del-2-right.fa
 delta-filter -i 8 gfp-del-2.delta > gfp-del-2.fdelta
 show-coords -T -r gfp-del-2.fdelta > gfp-del-2.coords.tab
+
+nucmer $NUCMER_OPTIONS --prefix=gfp-del-3 gfp-del-3-left.fa gfp-del-3-right.fa
+delta-filter -i 8 gfp-del-3.delta > gfp-del-3.fdelta
+show-coords -T -r gfp-del-3.fdelta > gfp-del-3.coords.tab
+
+rm *.fdelta
+rm *.delta
