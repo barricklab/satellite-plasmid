@@ -1,5 +1,5 @@
 ﻿name,start_left,end_left,start_right,end_right,size_left,size_right,combinations,description
 gfp-del-1,8973,179,180,1079,604,900,543600,"deletion starts between oriV and gfp, ends within gfp"
-gfp-del-2,180,1079,1080,3739,900,2660,2394000,"deletion starts within gfp, ends between gfp and repC"
-gfp-del-3,8973,179,1080,3739,604,2660,1606640,"deletion starts between oriV and gfp, ends between gfp and repC"
+gfp-del-2,180,1079,1080,2560,900,1481,1332900,"deletion starts within gfp, ends between gfp and specR"
+gfp-del-3,8973,179,1080,2560,604,1481,894524,"deletion starts between oriV and gfp, ends between gfp and specR"
 satellite,8973,1079,3740,8564,1504,4825,7256800,"deletion starts between oriV and the end of gfp, ends between the start of repC  and oriV"
