@@ -1,0 +1,56 @@
+/Users/jbarrick/src/satellite-plasmid/repeats/gfp-del-2-left.fa /Users/jbarrick/src/satellite-plasmid/repeats/gfp-del-2-right.fa
+NUCMER
+
+[S1]	[E1]	[S2]	[E2]	[LEN 1]	[LEN 2]	[% IDY]	[TAGS]
+5	12	108	115	8	8	100.00	GFP-del-1-left	GFP-del-2-right
+10	16	1298	1304	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+21	27	515	521	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+46	52	1436	1442	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+74	80	1265	1271	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+85	91	553	559	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+85	92	744	751	8	8	100.00	GFP-del-1-left	GFP-del-2-right
+97	103	1357	1363	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+103	109	233	239	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+107	113	1014	1020	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+115	122	382	389	8	8	100.00	GFP-del-1-left	GFP-del-2-right
+157	163	24	30	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+160	166	984	990	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+161	169	791	799	9	9	100.00	GFP-del-1-left	GFP-del-2-right
+187	193	343	349	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+232	239	144	151	8	8	100.00	GFP-del-1-left	GFP-del-2-right
+235	241	664	670	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+240	246	1074	1080	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+240	246	1287	1293	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+249	257	1464	1472	9	9	100.00	GFP-del-1-left	GFP-del-2-right
+266	272	330	336	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+274	280	900	906	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+274	280	966	972	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+308	314	1008	1014	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+341	348	1246	1253	8	8	100.00	GFP-del-1-left	GFP-del-2-right
+405	411	399	405	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+420	428	774	782	9	9	100.00	GFP-del-1-left	GFP-del-2-right
+522	528	511	517	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+543	549	1378	1384	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+557	563	91	97	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+573	579	530	536	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+582	588	498	504	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+644	650	109	115	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+661	668	59	66	8	8	100.00	GFP-del-1-left	GFP-del-2-right
+665	671	794	800	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+695	701	301	307	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+695	701	1442	1448	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+711	717	413	419	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+737	743	808	814	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+740	746	832	838	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+807	813	185	191	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+816	822	1392	1398	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+828	834	558	564	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+833	839	185	191	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+834	841	918	925	8	8	100.00	GFP-del-1-left	GFP-del-2-right
+836	842	1340	1346	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+848	854	282	288	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+849	856	1051	1058	8	8	100.00	GFP-del-1-left	GFP-del-2-right
+849	855	1238	1244	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+855	861	504	510	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+860	866	375	381	7	7	100.00	GFP-del-1-left	GFP-del-2-right
+890	897	661	668	8	8	100.00	GFP-del-1-left	GFP-del-2-right

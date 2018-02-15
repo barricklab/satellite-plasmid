@@ -1,0 +1,25 @@
+/Users/jbarrick/src/satellite-plasmid/repeats/gfp-del-1-left.fa /Users/jbarrick/src/satellite-plasmid/repeats/gfp-del-1-right.fa
+NUCMER
+
+[S1]	[E1]	[S2]	[E2]	[LEN 1]	[LEN 2]	[% IDY]	[TAGS]
+57	63	246	252	7	7	100.00	GFP-del-1-left	GFP-del-1-right
+61	68	566	573	8	8	100.00	GFP-del-1-left	GFP-del-1-right
+93	100	29	36	8	8	100.00	GFP-del-1-left	GFP-del-1-right
+164	170	273	279	7	7	100.00	GFP-del-1-left	GFP-del-1-right
+171	179	678	686	9	9	100.00	GFP-del-1-left	GFP-del-1-right
+246	252	551	557	7	7	100.00	GFP-del-1-left	GFP-del-1-right
+247	253	211	217	7	7	100.00	GFP-del-1-left	GFP-del-1-right
+258	265	882	889	8	8	100.00	GFP-del-1-left	GFP-del-1-right
+275	282	367	374	8	8	100.00	GFP-del-1-left	GFP-del-1-right
+388	394	705	711	7	7	100.00	GFP-del-1-left	GFP-del-1-right
+402	412	95	105	11	11	100.00	GFP-del-1-left	GFP-del-1-right
+407	413	28	34	7	7	100.00	GFP-del-1-left	GFP-del-1-right
+408	414	248	254	7	7	100.00	GFP-del-1-left	GFP-del-1-right
+465	473	509	517	9	9	100.00	GFP-del-1-left	GFP-del-1-right
+470	476	331	337	7	7	100.00	GFP-del-1-left	GFP-del-1-right
+481	488	560	567	8	8	100.00	GFP-del-1-left	GFP-del-1-right
+500	506	385	391	7	7	100.00	GFP-del-1-left	GFP-del-1-right
+518	524	399	405	7	7	100.00	GFP-del-1-left	GFP-del-1-right
+541	547	322	328	7	7	100.00	GFP-del-1-left	GFP-del-1-right
+565	571	597	603	7	7	100.00	GFP-del-1-left	GFP-del-1-right
+595	601	69	75	7	7	100.00	GFP-del-1-left	GFP-del-1-right
