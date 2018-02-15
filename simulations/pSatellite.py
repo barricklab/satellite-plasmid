@@ -21,7 +21,6 @@ print("Would you like to use default values for mutation rates, fitnesses, etc.?
 useDefaults = input("y/n: ")
 while useDefaults != "y" and useDefaults != "n":
 	useDefaults = input("Please type a single character, y/n: ")
-
 if useDefaults == "y":
 	useDefaults = True
 else:
@@ -34,7 +33,7 @@ if useDefaults:
 	miniPlasmidFitness = 1.2
 	deletionPlasmidFitness = 1.05
 	# Mutation rates for full plasmid to convert to miniplasmid or deletion plasmid
-	FPtoMPrate = 10 ** -5
+	FPtoMPrate = 3 * (10 ** -5)
 	FPtoDPrate = 10 ** -5
 	IntRate = 10 ** -5
 	# Relative fitness
@@ -44,19 +43,21 @@ if useDefaults:
 	# all deletion plasmid  = 0.90
 	fitnessAllFP = 0.45
 	fitnessContainsMP = 0.81
-	averageFractionMP = 0.8
+	averageFractionMP = 0.80
 	fitnessAllDP = 0.90
-
+	fitnessInt = 0.90
 else:
 	plasmidsPerCell = int(input("Enter number of plasmids per cell: "))
 	# Relative fitnesses of plasmids for intra-cell replication
 	fullPlasmidFitness = float(input("Enter full plasmid fitness: "))
 	miniPlasmidFitness = float(input("Enter miniplasmid fitness: "))
 	deletionPlasmidFitness = float(input("Enter deletion plasmid fitness: "))
+	fitnessInt = float(input("Enter fitness for AbR integration: "))
 	# Mutation rates for full plasmid to convert to miniplasmid or deletion plasmid
 	FPtoMPrate = float(eval(input("Enter mutation rate for full plasmid to miniplasmid: ")))
 	FPtoDPrate = float(eval(input("Enter mutation rate for full plasmid to deletion plasmid: ")))
-
+	IntRate = float(eval(input("Enter rate of AbR integration to chromosome: ")))
+	
 	fitnessAllFP = float(input("Enter relative fitness for all full plasmids: "))
 	fitnessContainsMP =  float(input("Enter relative fitness for cells with miniplasmid: "))
 	averageFractionMP = float(input("Enter average fraction on miniplasmid: "))
@@ -65,11 +66,13 @@ else:
 fitnessCostFP = (1 - fitnessAllFP)/plasmidsPerCell
 fitnessCostMP = ((1 - fitnessCostFP * (plasmidsPerCell * (1-averageFractionMP))) - fitnessContainsMP) / (plasmidsPerCell * averageFractionMP)
 fitnessCostDP = (1 - fitnessAllDP)/plasmidsPerCell
+fitnessCostInt = 1 - fitnessInt
 
 print ("\nFitness Model")
 print ("  Full Plasmid Cost = " + str(fitnessCostFP))
 print ("  Mini Plasmid Cost = " + str(fitnessCostMP))
 print ("  Del  Plasmid Cost = " + str(fitnessCostDP))
+print ("  Integration Cost = " + str(fitnessInt))
 
 #Set to empty string to not create file
 populationFileName = "population.csv"
@@ -93,8 +96,9 @@ def computeFitness(cellType):
 	else:
 		fitness = 1 # If an antibiotic resistance gene is present, fitness depends on plasmids in cell
 		fitness -= fitnessCostFP * cellType[0] # Fitness cost for full plasmid
-		fitness -= fitnessCostMP # Fitness cost for mini plasmid.
-		fitness -= fitnessCostDP # Fitness cost for deletion plasmid
+		fitness -= fitnessCostMP * cellType[1] # Fitness cost for mini plasmid.
+		fitness -= fitnessCostDP * cellType[2]# Fitness cost for deletion plasmid
+		fitness -= fitnessCostInt * cellType[3] # Fitness cost for AbR integration in chromosome
 	return fitness # Return fitness of a cell containing those plasmids
 
 def computeSelectionProb(states):
