@@ -1,236 +1,140 @@
-Generation 1:Number of cells with only full plasmids: 99969
-Number of cells containing at least one mini plasmid: 23
+Generation 1:Number of cells with only full plasmids: 50000
+Number of cells containing at least one mini plasmid: 0
 Number of cells containing majority mini plasmids: 0
-Number of cells containing at least one deletion plasmid: 8
+Number of cells containing at least one deletion plasmid: 0
 Number of cells containing only deletion plasmid: 0
-Number of cells with AbR intregrated into chromosome: 0Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 99.99845%
-Mini plasmids as percent of total plasmids: 0.00115%
-Deletion plasmids as percent of total plasmids: 0.00039999999999999996%
+Number of cells with AbR intregrated into chromosome: 5020Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 100.0%
+Mini plasmids as percent of total plasmids: 0.0%
+Deletion plasmids as percent of total plasmids: 0.0%
 __________________________________________________________________________
 
-Generation 2:Number of cells with only full plasmids: 99926
-Number of cells containing at least one mini plasmid: 60
+Generation 2:Number of cells with only full plasmids: 50000
+Number of cells containing at least one mini plasmid: 0
 Number of cells containing majority mini plasmids: 0
-Number of cells containing at least one deletion plasmid: 14
+Number of cells containing at least one deletion plasmid: 0
 Number of cells containing only deletion plasmid: 0
-Number of cells with AbR intregrated into chromosome: 0Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 99.99580439376017%
-Mini plasmids as percent of total plasmids: 0.003285715729984936%
-Deletion plasmids as percent of total plasmids: 0.0009098905098419823%
+Number of cells with AbR intregrated into chromosome: 4198Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 100.0%
+Mini plasmids as percent of total plasmids: 0.0%
+Deletion plasmids as percent of total plasmids: 0.0%
 __________________________________________________________________________
 
-Generation 3:Number of cells with only full plasmids: 99906
-Number of cells containing at least one mini plasmid: 69
+Generation 3:Number of cells with only full plasmids: 50000
+Number of cells containing at least one mini plasmid: 0
 Number of cells containing majority mini plasmids: 0
-Number of cells containing at least one deletion plasmid: 25
+Number of cells containing at least one deletion plasmid: 0
 Number of cells containing only deletion plasmid: 0
-Number of cells with AbR intregrated into chromosome: 0Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 99.9932755780201%
-Mini plasmids as percent of total plasmids: 0.004839546121893393%
-Deletion plasmids as percent of total plasmids: 0.0018848758580005847%
+Number of cells with AbR intregrated into chromosome: 3422Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 100.0%
+Mini plasmids as percent of total plasmids: 0.0%
+Deletion plasmids as percent of total plasmids: 0.0%
 __________________________________________________________________________
 
-Generation 4:Number of cells with only full plasmids: 99876
-Number of cells containing at least one mini plasmid: 92
+Generation 4:Number of cells with only full plasmids: 50000
+Number of cells containing at least one mini plasmid: 0
 Number of cells containing majority mini plasmids: 0
-Number of cells containing at least one deletion plasmid: 32
+Number of cells containing at least one deletion plasmid: 0
 Number of cells containing only deletion plasmid: 0
-Number of cells with AbR intregrated into chromosome: 2Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 99.99043147400329%
-Mini plasmids as percent of total plasmids: 0.007112433762262553%
-Deletion plasmids as percent of total plasmids: 0.002456092234450378%
+Number of cells with AbR intregrated into chromosome: 2920Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 100.0%
+Mini plasmids as percent of total plasmids: 0.0%
+Deletion plasmids as percent of total plasmids: 0.0%
 __________________________________________________________________________
 
-Generation 5:Number of cells with only full plasmids: 99890
-Number of cells containing at least one mini plasmid: 86
+Generation 5:Number of cells with only full plasmids: 50000
+Number of cells containing at least one mini plasmid: 0
 Number of cells containing majority mini plasmids: 0
-Number of cells containing at least one deletion plasmid: 24
+Number of cells containing at least one deletion plasmid: 0
 Number of cells containing only deletion plasmid: 0
-Number of cells with AbR intregrated into chromosome: 2Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 99.98943652041034%
-Mini plasmids as percent of total plasmids: 0.00846103947715904%
-Deletion plasmids as percent of total plasmids: 0.0021024401125061855%
+Number of cells with AbR intregrated into chromosome: 2514Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 100.0%
+Mini plasmids as percent of total plasmids: 0.0%
+Deletion plasmids as percent of total plasmids: 0.0%
 __________________________________________________________________________
 
-Generation 6:Number of cells with only full plasmids: 99868
-Number of cells containing at least one mini plasmid: 101
+Generation 6:Number of cells with only full plasmids: 50000
+Number of cells containing at least one mini plasmid: 0
 Number of cells containing majority mini plasmids: 0
-Number of cells containing at least one deletion plasmid: 31
+Number of cells containing at least one deletion plasmid: 0
 Number of cells containing only deletion plasmid: 0
-Number of cells with AbR intregrated into chromosome: 4Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 99.98439616494692%
-Mini plasmids as percent of total plasmids: 0.012318817147177526%
-Deletion plasmids as percent of total plasmids: 0.0032850179059140073%
+Number of cells with AbR intregrated into chromosome: 2094Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 100.0%
+Mini plasmids as percent of total plasmids: 0.0%
+Deletion plasmids as percent of total plasmids: 0.0%
 __________________________________________________________________________
 
-Generation 7:Number of cells with only full plasmids: 99854
-Number of cells containing at least one mini plasmid: 110
-Number of cells containing majority mini plasmids: 2
-Number of cells containing at least one deletion plasmid: 36
+Generation 7:Number of cells with only full plasmids: 50000
+Number of cells containing at least one mini plasmid: 0
+Number of cells containing majority mini plasmids: 0
+Number of cells containing at least one deletion plasmid: 0
 Number of cells containing only deletion plasmid: 0
-Number of cells with AbR intregrated into chromosome: 6Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 99.98238648267815%
-Mini plasmids as percent of total plasmids: 0.013659462412856737%
-Deletion plasmids as percent of total plasmids: 0.003954054908984845%
+Number of cells with AbR intregrated into chromosome: 1828Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 100.0%
+Mini plasmids as percent of total plasmids: 0.0%
+Deletion plasmids as percent of total plasmids: 0.0%
 __________________________________________________________________________
 
-Generation 8:Number of cells with only full plasmids: 99838
-Number of cells containing at least one mini plasmid: 124
-Number of cells containing majority mini plasmids: 1
-Number of cells containing at least one deletion plasmid: 38
+Generation 8:Number of cells with only full plasmids: 50000
+Number of cells containing at least one mini plasmid: 0
+Number of cells containing majority mini plasmids: 0
+Number of cells containing at least one deletion plasmid: 0
 Number of cells containing only deletion plasmid: 0
-Number of cells with AbR intregrated into chromosome: 6Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 99.97704966514075%
-Mini plasmids as percent of total plasmids: 0.018072746913770407%
-Deletion plasmids as percent of total plasmids: 0.004877587945477809%
+Number of cells with AbR intregrated into chromosome: 1434Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 100.0%
+Mini plasmids as percent of total plasmids: 0.0%
+Deletion plasmids as percent of total plasmids: 0.0%
 __________________________________________________________________________
 
-Generation 9:Number of cells with only full plasmids: 99830
-Number of cells containing at least one mini plasmid: 120
-Number of cells containing majority mini plasmids: 7
-Number of cells containing at least one deletion plasmid: 50
+Generation 9:Number of cells with only full plasmids: 50000
+Number of cells containing at least one mini plasmid: 0
+Number of cells containing majority mini plasmids: 0
+Number of cells containing at least one deletion plasmid: 0
 Number of cells containing only deletion plasmid: 0
-Number of cells with AbR intregrated into chromosome: 6Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 99.97179687792979%
-Mini plasmids as percent of total plasmids: 0.020343235591620847%
-Deletion plasmids as percent of total plasmids: 0.007859886478580783%
+Number of cells with AbR intregrated into chromosome: 1168Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 100.0%
+Mini plasmids as percent of total plasmids: 0.0%
+Deletion plasmids as percent of total plasmids: 0.0%
 __________________________________________________________________________
 
-Generation 10:Number of cells with only full plasmids: 99814
-Number of cells containing at least one mini plasmid: 130
-Number of cells containing majority mini plasmids: 11
-Number of cells containing at least one deletion plasmid: 56
+Generation 10:Number of cells with only full plasmids: 50000
+Number of cells containing at least one mini plasmid: 0
+Number of cells containing majority mini plasmids: 0
+Number of cells containing at least one deletion plasmid: 0
 Number of cells containing only deletion plasmid: 0
-Number of cells with AbR intregrated into chromosome: 4Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 99.96258594824835%
-Mini plasmids as percent of total plasmids: 0.026004821684526568%
-Deletion plasmids as percent of total plasmids: 0.011409230067124304%
+Number of cells with AbR intregrated into chromosome: 948Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 100.0%
+Mini plasmids as percent of total plasmids: 0.0%
+Deletion plasmids as percent of total plasmids: 0.0%
 __________________________________________________________________________
 
-Generation 11:Number of cells with only full plasmids: 99770
-Number of cells containing at least one mini plasmid: 169
-Number of cells containing majority mini plasmids: 22
-Number of cells containing at least one deletion plasmid: 61
+Generation 11:Number of cells with only full plasmids: 50000
+Number of cells containing at least one mini plasmid: 0
+Number of cells containing majority mini plasmids: 0
+Number of cells containing at least one deletion plasmid: 0
 Number of cells containing only deletion plasmid: 0
-Number of cells with AbR intregrated into chromosome: 4Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 99.9463046555662%
-Mini plasmids as percent of total plasmids: 0.03792073128434639%
-Deletion plasmids as percent of total plasmids: 0.01577461314945033%
+Number of cells with AbR intregrated into chromosome: 748Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 100.0%
+Mini plasmids as percent of total plasmids: 0.0%
+Deletion plasmids as percent of total plasmids: 0.0%
 __________________________________________________________________________
 
-Generation 12:Number of cells with only full plasmids: 99732
-Number of cells containing at least one mini plasmid: 196
-Number of cells containing majority mini plasmids: 34
-Number of cells containing at least one deletion plasmid: 72
+Generation 12:Number of cells with only full plasmids: 50000
+Number of cells containing at least one mini plasmid: 0
+Number of cells containing majority mini plasmids: 0
+Number of cells containing at least one deletion plasmid: 0
 Number of cells containing only deletion plasmid: 0
-Number of cells with AbR intregrated into chromosome: 6Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 99.92626907113417%
-Mini plasmids as percent of total plasmids: 0.050506970784055215%
-Deletion plasmids as percent of total plasmids: 0.02322395808178327%
+Number of cells with AbR intregrated into chromosome: 644Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 100.0%
+Mini plasmids as percent of total plasmids: 0.0%
+Deletion plasmids as percent of total plasmids: 0.0%
 __________________________________________________________________________
 
-Generation 13:Number of cells with only full plasmids: 99675
-Number of cells containing at least one mini plasmid: 239
-Number of cells containing majority mini plasmids: 53
-Number of cells containing at least one deletion plasmid: 86
+Generation 13:Number of cells with only full plasmids: 50000
+Number of cells containing at least one mini plasmid: 0
+Number of cells containing majority mini plasmids: 0
+Number of cells containing at least one deletion plasmid: 0
 Number of cells containing only deletion plasmid: 0
-Number of cells with AbR intregrated into chromosome: 4Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 99.90533451810798%
-Mini plasmids as percent of total plasmids: 0.06876352593459036%
-Deletion plasmids as percent of total plasmids: 0.025901955957424175%
+Number of cells with AbR intregrated into chromosome: 556Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 100.0%
+Mini plasmids as percent of total plasmids: 0.0%
+Deletion plasmids as percent of total plasmids: 0.0%
 __________________________________________________________________________
 
-Generation 14:Number of cells with only full plasmids: 99627
-Number of cells containing at least one mini plasmid: 268
-Number of cells containing majority mini plasmids: 80
-Number of cells containing at least one deletion plasmid: 105
+Generation 14:Number of cells with only full plasmids: 50000
+Number of cells containing at least one mini plasmid: 0
+Number of cells containing majority mini plasmids: 0
+Number of cells containing at least one deletion plasmid: 0
 Number of cells containing only deletion plasmid: 0
-Number of cells with AbR intregrated into chromosome: 0Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 99.87100294057812%
-Mini plasmids as percent of total plasmids: 0.09031335343036626%
-Deletion plasmids as percent of total plasmids: 0.038683705991504995%
+Number of cells with AbR intregrated into chromosome: 448Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 100.0%
+Mini plasmids as percent of total plasmids: 0.0%
+Deletion plasmids as percent of total plasmids: 0.0%
 __________________________________________________________________________
 
-Generation 15:Number of cells with only full plasmids: 99560
-Number of cells containing at least one mini plasmid: 337
-Number of cells containing majority mini plasmids: 108
-Number of cells containing at least one deletion plasmid: 103
-Number of cells containing only deletion plasmid: 2
-Number of cells with AbR intregrated into chromosome: 2Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 99.83033072149523%
-Mini plasmids as percent of total plasmids: 0.12532506670900692%
-Deletion plasmids as percent of total plasmids: 0.04434421179576587%
-__________________________________________________________________________
-
-Generation 16:Number of cells with only full plasmids: 99476
-Number of cells containing at least one mini plasmid: 399
-Number of cells containing majority mini plasmids: 161
-Number of cells containing at least one deletion plasmid: 125
-Number of cells containing only deletion plasmid: 2
-Number of cells with AbR intregrated into chromosome: 2Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 99.78028908573964%
-Mini plasmids as percent of total plasmids: 0.16789036435650073%
-Deletion plasmids as percent of total plasmids: 0.05182054990385722%
-__________________________________________________________________________
-
-Generation 17:Number of cells with only full plasmids: 99353
-Number of cells containing at least one mini plasmid: 493
-Number of cells containing majority mini plasmids: 225
-Number of cells containing at least one deletion plasmid: 154
-Number of cells containing only deletion plasmid: 8
-Number of cells with AbR intregrated into chromosome: 4Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 99.69522677851621%
-Mini plasmids as percent of total plasmids: 0.2323574594145373%
-Deletion plasmids as percent of total plasmids: 0.07241576206925085%
-__________________________________________________________________________
-
-Generation 18:Number of cells with only full plasmids: 99171
-Number of cells containing at least one mini plasmid: 649
-Number of cells containing majority mini plasmids: 326
-Number of cells containing at least one deletion plasmid: 180
-Number of cells containing only deletion plasmid: 11
-Number of cells with AbR intregrated into chromosome: 2Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 99.57721608550565%
-Mini plasmids as percent of total plasmids: 0.3290772538249005%
-Deletion plasmids as percent of total plasmids: 0.09370666066944039%
-__________________________________________________________________________
-
-Generation 19:Number of cells with only full plasmids: 98977
-Number of cells containing at least one mini plasmid: 784
-Number of cells containing majority mini plasmids: 434
-Number of cells containing at least one deletion plasmid: 239
-Number of cells containing only deletion plasmid: 23
-Number of cells with AbR intregrated into chromosome: 2Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 99.44378907208514%
-Mini plasmids as percent of total plasmids: 0.4233055202202051%
-Deletion plasmids as percent of total plasmids: 0.1329054076946533%
-__________________________________________________________________________
-
-Generation 20:Number of cells with only full plasmids: 98662
-Number of cells containing at least one mini plasmid: 1000
-Number of cells containing majority mini plasmids: 605
-Number of cells containing at least one deletion plasmid: 338
-Number of cells containing only deletion plasmid: 43
-Number of cells with AbR intregrated into chromosome: 0Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 99.23171596442162%
-Mini plasmids as percent of total plasmids: 0.5703981388251205%
-Deletion plasmids as percent of total plasmids: 0.19788589675326443%
-__________________________________________________________________________
-
-Generation 21:Number of cells with only full plasmids: 98341
-Number of cells containing at least one mini plasmid: 1226
-Number of cells containing majority mini plasmids: 767
-Number of cells containing at least one deletion plasmid: 433
-Number of cells containing only deletion plasmid: 82
-Number of cells with AbR intregrated into chromosome: 0Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 98.99349304969756%
-Mini plasmids as percent of total plasmids: 0.7277550764589779%
-Deletion plasmids as percent of total plasmids: 0.2787518738434571%
-__________________________________________________________________________
-
-Generation 22:Number of cells with only full plasmids: 97907
-Number of cells containing at least one mini plasmid: 1522
-Number of cells containing majority mini plasmids: 1024
-Number of cells containing at least one deletion plasmid: 571
-Number of cells containing only deletion plasmid: 141
-Number of cells with AbR intregrated into chromosome: 0Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 98.65641840371265%
-Mini plasmids as percent of total plasmids: 0.9462978415550997%
-Deletion plasmids as percent of total plasmids: 0.39728375473225996%
-__________________________________________________________________________
-
-Generation 23:Number of cells with only full plasmids: 97286
-Number of cells containing at least one mini plasmid: 1906
-Number of cells containing majority mini plasmids: 1349
-Number of cells containing at least one deletion plasmid: 809
-Number of cells containing only deletion plasmid: 231
-Number of cells with AbR intregrated into chromosome: 0Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 98.16914610313736%
-Mini plasmids as percent of total plasmids: 1.237227242727971%
-Deletion plasmids as percent of total plasmids: 0.5936266541346625%
-__________________________________________________________________________
-
-Generation 24:Number of cells with only full plasmids: 96440
-Number of cells containing at least one mini plasmid: 2446
-Number of cells containing majority mini plasmids: 1788
-Number of cells containing at least one deletion plasmid: 1116
-Number of cells containing only deletion plasmid: 397
-Number of cells with AbR intregrated into chromosome: 0Number of cells with AbR integraged into chromosome with no plasmids: 0Full plasmids as percent of total Plasmids: 97.4878816845819%
