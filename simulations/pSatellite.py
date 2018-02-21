@@ -324,8 +324,12 @@ def divideIntoNextGeneration(cell, states, nextGeneration):
 
 	cell = list(cell) # Convert the tuple to a list
 
+	plasmidsCanReplicate = True
+	if cell[0] == 0 and cell[2] == 0:  # If cell lacks full and deletion plasmids, plasmids can't replicate
+		plasmidsCanReplicate = False
+
 	#For methods that replicate BEFORE segregate
-	if (plasmidReplicationSegregationModel == 1) or (plasmidReplicationSegregationModel == 2):
+	if ((plasmidReplicationSegregationModel == 1) or (plasmidReplicationSegregationModel == 2)) and plasmidsCanReplicate:
 		replicatePlasmidsInCell(cell,plasmidsPerCell)
 
 	randNum = random.uniform(0, 1)
@@ -364,7 +368,7 @@ def divideIntoNextGeneration(cell, states, nextGeneration):
 		exit()
 	
 		#For methods that replicate AFTER segregate
-	if (plasmidReplicationSegregationModel == 4):
+	if (plasmidReplicationSegregationModel == 4) and plasmidsCanReplicate:
 		replicatePlasmidsInCell(daughter1,plasmidsPerCell-daughter1[0]-daughter1[1]-daughter1[2])
 		replicatePlasmidsInCell(daughter2,plasmidsPerCell-daughter2[0]-daughter2[1]-daughter2[2])
 	
