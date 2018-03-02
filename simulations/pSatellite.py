@@ -17,11 +17,31 @@ import time
 # Cell population stored as dictionary of lists:
 #   Keys are tuples as number of (FP, MP, DP) in that category of cell
 #   Values are lists with (Fitness, Selection Probability, Cell Number)
+print("Would you like to run simulation or run controls?")
+runControls = input("Type s for simulation or c for controls: ")
+while runControls != "s" and runControls != "c":
+	runControls = input("Please type a single character, s or c: ")
+if runControls == "c":
+	runControls = True
+else:
+	runControls = False
+
+if runControls == True:
+	print ("Enter desired control to run: ")
+	print ("For controls 1-4, all mutation rates are set to 0: ")
+	print ("1: 90% of starting population has only full plasmids, while 10% has only deletion plasmids.")
+	print ("2: 50% of starting population has only full plasmids, and 50% has only satellite plasmids.")
+	print ("3: 90% of starting population has only full plasmids, 10% has AbR integration in chromosome and no plasmids.")
+	print ("4: 90% of starting population has only full plasmids, and 10% has AbR integration in chromosome and a full set of full plasmids.")
+	print ("5: Population starts with only full plasmid, FP --> MP and INT rates are 0.")
+	initialPopulation = int(input("Enter desired control number: "))
+else:
+	initialPopulation = 0 # Indicates that no control is being run
+
 print("Would you like to use default values for mutation rates, fitnesses, etc.?")
 useDefaults = input("y/n: ")
 while useDefaults != "y" and useDefaults != "n":
 	useDefaults = input("Please type a single character, y/n: ")
-
 if useDefaults == "y":
 	useDefaults = True
 else:
@@ -34,8 +54,9 @@ if useDefaults:
 	miniPlasmidFitness = 1.2
 	deletionPlasmidFitness = 1.05
 	# Mutation rates for full plasmid to convert to miniplasmid or deletion plasmid
-	FPtoMPrate = 10 ** -5
+	FPtoMPrate = 3 * (10 ** -5)
 	FPtoDPrate = 10 ** -5
+	IntRate = 10 ** -5
 	# Relative fitness
 	# all full plasmids     = 0.45
 	# contains mini plasmid = 0.81
@@ -43,37 +64,51 @@ if useDefaults:
 	# all deletion plasmid  = 0.90
 	fitnessAllFP = 0.45
 	fitnessContainsMP = 0.81
-	averageFractionMP = 0.8
+	averageFractionMP = 0.80
 	fitnessAllDP = 0.90
+	fitnessInt = 0.90
 else:
 	plasmidsPerCell = int(input("Enter number of plasmids per cell: "))
 	# Relative fitnesses of plasmids for intra-cell replication
 	fullPlasmidFitness = float(input("Enter full plasmid fitness: "))
 	miniPlasmidFitness = float(input("Enter miniplasmid fitness: "))
 	deletionPlasmidFitness = float(input("Enter deletion plasmid fitness: "))
+	fitnessInt = float(input("Enter fitness for AbR integration: "))
 	# Mutation rates for full plasmid to convert to miniplasmid or deletion plasmid
 	FPtoMPrate = float(eval(input("Enter mutation rate for full plasmid to miniplasmid: ")))
 	FPtoDPrate = float(eval(input("Enter mutation rate for full plasmid to deletion plasmid: ")))
-
+	IntRate = float(eval(input("Enter rate of AbR integration to chromosome: ")))
+	
 	fitnessAllFP = float(input("Enter relative fitness for all full plasmids: "))
 	fitnessContainsMP =  float(input("Enter relative fitness for cells with miniplasmid: "))
 	averageFractionMP = float(input("Enter average fraction on miniplasmid: "))
 	fitnessAllDP =  float(input("Enter relative fitness for all deletion plasmids: "))
 
+if initialPopulation in (1, 2, 3, 4):
+	print("ping")
+	FPtoMPrate = 0
+	FPtoDPrate = 0
+	IntRate = 0
+elif initialPopulation == 5:
+	FPtoMPrate = 0
+	IntRate = 0
+
 fitnessCostFP = (1 - fitnessAllFP)/plasmidsPerCell
 fitnessCostMP = ((1 - fitnessCostFP * (plasmidsPerCell * (1-averageFractionMP))) - fitnessContainsMP) / (plasmidsPerCell * averageFractionMP)
 fitnessCostDP = (1 - fitnessAllDP)/plasmidsPerCell
+fitnessCostInt = 1 - fitnessInt
 
 print ("\nFitness Model")
 print ("  Full Plasmid Cost = " + str(fitnessCostFP))
 print ("  Mini Plasmid Cost = " + str(fitnessCostMP))
 print ("  Del  Plasmid Cost = " + str(fitnessCostDP))
+print ("  Integration Cost = " + str(fitnessCostInt))
 
 #Set to empty string to not create file
 populationFileName = "population.csv"
 summaryFileName = "summary.csv"
 
-print("\nModels for plasmid replication and segregation")
+print("\nModels for plasmid replication and segregation. In all models, the parent first has a chance of chromosomal integration of AbR; if AbR present, always passed to daughter cells.")
 print("1 = First, replicate plasmidsPerCell split new plasmids. Then split exactly 50/50 into daughter cells.")
 print("2 = First replicate plasmidsPerCell split new plasmids. Then, coin flip for which plasmids end up in each daughter cell.")
 print("4 = First, segregate plasmid via coin flip to new cells. Then, replicate each cell up to plasmidsPerCell split.\n")
@@ -86,13 +121,14 @@ daughterPlacement = int(input("Enter number for desired model: "))
 
 
 def computeFitness(cellType):
-	if cellType[0] == 0 and cellType[2] == 0: # If the cell doesn't have antibiotic resistance gene
+	if cellType[0] == 0 and cellType[2] == 0 and cellType[3] == 0: # If the cell doesn't have antibiotic resistance gene
 		fitness = 0 # Fitness is 0
 	else:
 		fitness = 1 # If an antibiotic resistance gene is present, fitness depends on plasmids in cell
 		fitness -= fitnessCostFP * cellType[0] # Fitness cost for full plasmid
-		fitness -= fitnessCostMP # Fitness cost for mini plasmid.
-		fitness -= fitnessCostDP # Fitness cost for deletion plasmid
+		fitness -= fitnessCostMP * cellType[1] # Fitness cost for mini plasmid.
+		fitness -= fitnessCostDP * cellType[2]# Fitness cost for deletion plasmid
+		fitness -= fitnessCostInt * cellType[3] # Fitness cost for AbR integration in chromosome
 	return fitness # Return fitness of a cell containing those plasmids
 
 def computeSelectionProb(states):
@@ -151,7 +187,7 @@ def replicatePlasmidsInCell(cell,numNewPlasmids):
 	
 	#print str(FPfit) + " " + str(MPfit) + " " + str(DPfit) + "\n"
 
-	pTot = sum(cell[0:3])
+	pTot = cell[0] + cell[1] + cell[2]
 	for plasmid in range(0,numNewPlasmids):
 		randNum = random.uniform(0, 1)
 		if DPfit > randNum:
@@ -161,11 +197,27 @@ def replicatePlasmidsInCell(cell,numNewPlasmids):
 		else:
 			randNum = random.uniform(0, 1)
 			if FPtoMPrate > randNum:
-				cell[2] += 1
-			elif FPtoMPrate + FPtoDPrate > randNum:
 				cell[1] += 1
+			elif FPtoMPrate + FPtoDPrate > randNum:
+				cell[2] += 1
 			else:
-				cell[0] += 1		
+				cell[0] += 1	
+
+def initializePopulation (pop, states, initialPopulation):
+	if initialPopulation == 1:
+		states[(plasmidsPerCell, 0, 0, 0)] = [computeFitness((plasmidsPerCell, 0, 0, 0)), None, int(0.9 * pop)]
+		states[(0, 0, plasmidsPerCell, 0)] = [computeFitness((0, 0, plasmidsPerCell, 0)), None, int(0.1 * pop)]
+	elif initialPopulation == 2:
+		states[(plasmidsPerCell, 0, 0, 0)] = [computeFitness((plasmidsPerCell, 0, 0, 0)), None, int(0.5 * pop)]
+		states[(0, plasmidsPerCell, 0, 0)] = [computeFitness((plasmidsPerCell, 0, 0, 0)), None, int(0.5 * pop)]
+	elif initialPopulation == 3:
+		states[(plasmidsPerCell, 0, 0, 0)] = [computeFitness((plasmidsPerCell, 0, 0, 0)), None, int(0.9 * pop)]
+		states[(0, 0, 0, 1)] = [computeFitness((plasmidsPerCell, 0, 0, 0)), None, int(0.1 * pop)]
+	elif initialPopulation == 4:
+		states[(plasmidsPerCell, 0, 0, 0)] = [computeFitness((plasmidsPerCell, 0, 0, 0)), None, int(0.9 * pop)]
+		states[(plasmidsPerCell, 0, 0, 1)] = [computeFitness((plasmidsPerCell, 0, 0, 0)), None, int(0.1 * pop)]
+	else:
+		states[(plasmidsPerCell, 0, 0, 0)] = [computeFitness((plasmidsPerCell, 0, 0, 0)), None, pop] # all cells have only full plasmids
 
 def divide(cell, states, pop):
 
@@ -187,9 +239,16 @@ def divide(cell, states, pop):
 	if (plasmidReplicationSegregationModel == 1) or (plasmidReplicationSegregationModel == 2):
 		replicatePlasmidsInCell(cell,plasmidsPerCell)
 
-	daughter1 = [0, 0, 0] # Make two empty daughter cells
-	daughter2 = [0, 0, 0]
+	randNum = random.uniform(0, 1)
+	if IntRate > randNum:
+		cell[3] = 1
 
+	daughter1 = [0, 0, 0, 0] # Make two empty daughter cells
+	daughter2 = [0, 0, 0, 0]
+
+	if cell[3] == 1: # If the parent has AbR integration, so will both daughters.
+		daughter1 = [0, 0, 0, 1]
+		daughter2 = [0, 0, 0, 1]
 
 ### Divide plasmids
 	plasmidList = []
@@ -265,13 +324,24 @@ def divideIntoNextGeneration(cell, states, nextGeneration):
 
 	cell = list(cell) # Convert the tuple to a list
 
+	plasmidsCanReplicate = True
+	if cell[0] == 0 and cell[2] == 0:  # If cell lacks full and deletion plasmids, plasmids can't replicate
+		plasmidsCanReplicate = False
+
 	#For methods that replicate BEFORE segregate
-	if (plasmidReplicationSegregationModel == 1) or (plasmidReplicationSegregationModel == 2):
+	if ((plasmidReplicationSegregationModel == 1) or (plasmidReplicationSegregationModel == 2)) and plasmidsCanReplicate:
 		replicatePlasmidsInCell(cell,plasmidsPerCell)
 
-	daughter1 = [0, 0, 0] # Make two empty daughter cells
-	daughter2 = [0, 0, 0]
+	randNum = random.uniform(0, 1)
+	if IntRate > randNum:
+		cell[3] = 1
 
+	daughter1 = [0, 0, 0, 0] # Make two empty daughter cells
+	daughter2 = [0, 0, 0, 0]
+
+	if cell[3] == 1:
+		daughter1 = [0, 0, 0, 1]
+		daughter2 = [0, 0, 0, 1]
 
 ### Divide plasmids
 	plasmidList = []
@@ -298,7 +368,7 @@ def divideIntoNextGeneration(cell, states, nextGeneration):
 		exit()
 	
 		#For methods that replicate AFTER segregate
-	if (plasmidReplicationSegregationModel == 4):
+	if (plasmidReplicationSegregationModel == 4) and plasmidsCanReplicate:
 		replicatePlasmidsInCell(daughter1,plasmidsPerCell-daughter1[0]-daughter1[1]-daughter1[2])
 		replicatePlasmidsInCell(daughter2,plasmidsPerCell-daughter2[0]-daughter2[1]-daughter2[2])
 	
@@ -346,7 +416,9 @@ def main():
 	# Each key will be plasmid count: (full plasmids, mini plasmids, deletion plasmids, chromosomal integration)
 	# Each value will be a list: [the computed fitness of cells with that plasmid count, fitness relative to population, and the number of cells of that type].
 
-	states[(plasmidsPerCell, 0, 0)] = [computeFitness((plasmidsPerCell, 0, 0)), None, pop] # Create state dictionary, all cells have only full plasmids
+	print("initialPopulation: ", initialPopulation)
+
+	initializePopulation (pop, states, initialPopulation)
 	keepGoing = True # User will switch this to false to exit program
 	generation = 0 # A counter for keeping track of number of generation simulated
 
@@ -389,12 +461,16 @@ def main():
 					FPonlyCount += states[key][2]
 				if key[1] > 0: # Cells with at least one miniplasmid
 					MPcount += states[key][2]
-				if key[1] > (key[0] + key[1] + key[2]) * 0.5: # Cells with majority (6 or more) miniplasmdis
-					MPmajority += 1
+				if key[1] > (key[0] + key[1] + key[2]) * 0.5: # Cells with majority miniplasmdis
+					MPmajority += states[key][2]
 				if key[2] > 0: # Cells with at least one deletion plasmid
 					DPcount += states[key][2]
 				if key[2] > 0 and key[0] == 0 and key[1] == 0: # Cells with deletion plasmid but no full or mini plasmid
 					DPonlyCount += states[key][2]
+				if key[3] == 1:  # Cells with AbR integration
+					INcount += states[key][2]
+				if key[0] == 0 and key[1] == 0 and key[2] == 0 and key[3] == 0: # Cells with AbR integration and no other plasmids
+					INonlyCount += states[key][2]
 
 				FPtotal += key[0] * states[key][2] # Total number of full plasmids
 				MPtotal += key[1] * states[key][2] # Total number of mini plasmids
@@ -410,6 +486,8 @@ def main():
 			print ("Number of cells containing majority mini plasmids: " + str(MPmajority))
 			print ("Number of cells containing at least one deletion plasmid: " + str(DPcount))
 			print ("Number of cells containing only deletion plasmid: " + str(DPonlyCount))
+			print ("Number of cells with AbR intregrated into chromosome: " + str(INcount))
+			print ("Number of cells with AbR integraged into chromosome with no plasmids: " + str(INonlyCount))
 			print ("Total plasmids in population: " + str(totalPlasmids))
 			print ("Full plasmids as percent of total Plasmids: " + str(FPratio) + "%")
 			print ("Mini plasmids as percent of total plasmids: " + str(MPratio) + "%")
@@ -424,6 +502,8 @@ def main():
 			summaryfile.write (("Number of cells containing majority mini plasmids: " + str(MPmajority) + "\n"))
 			summaryfile.write (("Number of cells containing at least one deletion plasmid: " + str(DPcount) + "\n"))
 			summaryfile.write (("Number of cells containing only deletion plasmid: " + str(DPonlyCount) + "\n"))
+			summaryfile.write (("Number of cells with AbR intregrated into chromosome: " + str(INcount)))
+			summaryfile.write (("Number of cells with AbR integraged into chromosome with no plasmids: " + str(INonlyCount)))
 			summaryfile.write (("Full plasmids as percent of total Plasmids: " + str(FPratio) + "%\n"))
 			summaryfile.write (("Mini plasmids as percent of total plasmids: " + str(MPratio) + "%\n"))
 			summaryfile.write (("Deletion plasmids as percent of total plasmids: " + str(DPratio) + "%\n"))
